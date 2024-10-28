@@ -1,13 +1,53 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <!-- Titulo -->
+    <title>Analizador de texto</title>
+    <!-- Autor -->
+    <meta name="author" content="Catherine Solarte" />
+    <!-- estilo -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>Analizador de texto</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <body>
+    <header>
+      <h1>Analizador de Texto</h1>
+    </header>
 
-<body>
-  <script src="index.js" type="module"></script>
-</body>
+    <section>
+      <textarea
+        name="user-input"
+        rows="10"
+        cols="50"
+        placeholder="Agregare mi texto aquí"
+      ></textarea>
+    </section>
+
+    <section>
+      <ul>
+        <li>Total de palabras: <span id="word-count">0</span></li>
+        <li>Total de caracteres: <span id="character-count">0</span></li>
+        <!-- Agregar este id -->
+        <li>
+          Total de caracteres sin espacios:
+          <span id="char-no-space-count">0</span>
+        </li>
+        <li>Total de números: <span id="number-count">0</span></li>
+        <li>Suma de números: <span id="number-sum">0</span></li>
+        <li>Longitud media de palabras: <span id="avg-word-length">0</span></li>
+      </ul>
+    </section>
+
+    <!--Botón  de reinicio-->
+    <section>
+      <button id="reset-button">Limpiar Texto</button>
+    </section>
+    
+    <footer>
+      <p>Desarrollado por Catherine Solarte</p>
+    </footer>
+
+    <script src="./index.js" type="module"></script>
+  </body>
 </html>
