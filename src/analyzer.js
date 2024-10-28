@@ -1,21 +1,41 @@
-const analyzer = {  
+// Objeto que contiene métodos para analizar texto y calcular métricas
+const analyzer = {
+  // Cuenta el número de palabras en el texto dado
   getWordCount: (text) => {
-    //TODO: esta función debe retornar el recuento de palabras que se encuentran en el parámetro `text` de tipo `string`.
+    return text.trim().split(/\s+/).length;
   },
+
+  // Cuenta el número total de caracteres en el texto, incluyendo espacios y signos de puntuación
   getCharacterCount: (text) => {
-    //TODO: esta función debe retornar el recuento de caracteres que se encuentran en el parámetro `text` de tipo `string`.
+    return text.length;
   },
+
+  // Cuenta los caracteres excluyendo espacios y signos de puntuación
   getCharacterCountExcludingSpaces: (text) => {
-    //TODO: esta función debe retornar el recuento de caracteres excluyendo espacios y signos de puntuación que se encuentran en el parámetro `text` de tipo `string`.
+    return text.replace(/\s+/g, "").length;
   },
-  getAverageWordLength: (text) => {    
-    //TODO: esta función debe retornar la longitud media de palabras que se encuentran en el parámetro `text` de tipo `string`.
+
+  // Calcula la longitud media de las palabras en el texto
+  getAverageWordLength: (text) => {
+    const words = text.trim().split(/\s+/);
+    if (words.length === 0 || words[0] === "") return 0;
+
+    const totalLength = words.reduce((acc, word) => acc + word.length, 0);
+    return Number((totalLength / words.length).toFixed(2));
   },
-  getNumberCount: (text) => {
-    //TODO: esta función debe retornar cúantos números se encuentran en el parámetro `text` de tipo `string`.
+
+  // Cuenta el número de secuencias numéricas en el texto
+  getNumbersCount: (text) => {
+    const numbers = text.match(/\d+/g);
+    return numbers ? numbers.length : 0;
   },
-  getNumberSum: (text) => {
-    //TODO: esta función debe retornar la suma de todos los números que se encuentran en el parámetro `text` de tipo `string`.
+
+  // Suma todos los números presentes en el texto
+  getNumbersSum: (text) => {
+    const numbers = text.match(/\d+/g);
+    return numbers
+      ? numbers.reduce((acc, num) => acc + parseInt(num, 10), 0)
+      : 0;
   },
 };
 
