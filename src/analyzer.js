@@ -12,7 +12,7 @@ const analyzer = {
 
   // Cuenta los caracteres excluyendo espacios y signos de puntuación
   getCharacterCountExcludingSpaces: (text) => {
-    return text.replace(/\s+/g, "").length;
+    return text.replace(/\s+|[.,;:"«»[\]{}()¿?¡!-]/g, "").length;
   },
 
   // Calcula la longitud media de las palabras en el texto
@@ -25,17 +25,15 @@ const analyzer = {
   },
 
   // Cuenta el número de secuencias numéricas en el texto
-  getNumbersCount: (text) => {
-    const numbers = text.match(/\d+/g);
+  getNumberCount: (text) => {
+    const numbers = text.match(/\b\d+(\.\d+)?\b/g);
     return numbers ? numbers.length : 0;
   },
 
   // Suma todos los números presentes en el texto
-  getNumbersSum: (text) => {
-    const numbers = text.match(/\d+/g);
-    return numbers
-      ? numbers.reduce((acc, num) => acc + parseInt(num, 10), 0)
-      : 0;
+  getNumberSum: (text) => {
+    const numbers = text.match(/\b\d+(\.\d+)?\b/g);
+    return numbers ? numbers.reduce((acc, num) => acc + parseFloat(num), 0) : 0;
   },
 };
 
