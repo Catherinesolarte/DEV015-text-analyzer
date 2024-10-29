@@ -25,17 +25,17 @@ const analyzer = {
   },
 
   // Cuenta el número de secuencias numéricas en el texto
-  getNumberCount: (text) => {
-    if (!text) return 0;
-    const numbers = text.match(/\b\d+(\.\d+)?\b/g);
+  getNumbersCount: (text) => {
+    const numbers = text.match(/\d+/g);
     return numbers ? numbers.length : 0;
   },
 
   // Suma todos los números presentes en el texto
-  getNumberSum: (text) => {
-    if (!text) return 0;
-    const numbers = text.match(/\b\d+(\.\d+)?\b/g);
-    return numbers ? numbers.reduce((acc, num) => acc + parseFloat(num), 0) : 0;
+  getNumbersSum: (text) => {
+    const numbers = text.match(/\d+/g);
+    return numbers
+      ? numbers.reduce((acc, num) => acc + parseInt(num, 10), 0)
+      : 0;
   },
 };
 
